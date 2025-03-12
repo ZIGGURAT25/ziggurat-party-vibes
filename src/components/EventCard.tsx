@@ -1,6 +1,5 @@
 
-import { useState } from 'react';
-import { ArrowLeft, User, Phone } from 'lucide-react';
+import { User, Phone } from 'lucide-react';
 
 export interface EventProps {
   id: string;
@@ -14,35 +13,28 @@ export interface EventProps {
 }
 
 const EventCard = ({ event }: { event: EventProps }) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleFlip = () => {
-    setIsFlipped(!isFlipped);
-  };
-
   return (
-    <div className="h-[450px] perspective-1000">
+    <div className="h-[450px] perspective-1000 group">
       <div 
-        className={`relative w-full h-full transition-all duration-500 preserve-3d ${
-          isFlipped ? 'rotate-y-180' : ''
-        }`}
+        className="relative w-full h-full transition-all duration-700 preserve-3d hover:rotate-y-180 group-hover:scale-105"
       >
         {/* Front of card */}
         <div 
-          className="absolute w-full h-full backface-hidden glass-panel rounded-xl overflow-hidden cursor-pointer p-6 flex flex-col"
-          onClick={handleFlip}
+          className="absolute w-full h-full backface-hidden glass-panel rounded-xl overflow-hidden p-6 flex flex-col"
         >
-          <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-4">
+          <div className="absolute inset-0 bg-gradient-to-br from-ziggurat-blue/20 via-transparent to-ziggurat-magenta/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          
+          <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-4 relative">
             {event.title}
           </h3>
           
-          <p className="text-white/70 flex-grow">
+          <p className="text-white/70 flex-grow relative">
             {event.description}
           </p>
           
-          <div className="mt-6 flex justify-center">
-            <span className="inline-block px-4 py-2 bg-ziggurat-blue/20 text-ziggurat-blue rounded-md text-sm font-medium">
-              Click to view details
+          <div className="mt-6 flex justify-center relative">
+            <span className="inline-block px-4 py-2 bg-ziggurat-blue/20 text-ziggurat-blue rounded-md text-sm font-medium animate-pulse">
+              Hover to view details
             </span>
           </div>
         </div>
@@ -51,22 +43,17 @@ const EventCard = ({ event }: { event: EventProps }) => {
         <div 
           className="absolute w-full h-full backface-hidden rotate-y-180 glass-panel rounded-xl overflow-auto p-6"
         >
-          <button 
-            onClick={handleFlip}
-            className="absolute top-4 left-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4 text-white" />
-          </button>
+          <div className="absolute inset-0 bg-gradient-to-br from-ziggurat-magenta/20 via-transparent to-ziggurat-blue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           
-          <h3 className="text-xl font-display font-semibold text-white text-center mb-4 mt-2">
+          <h3 className="text-xl font-display font-semibold text-white text-center mb-4 relative">
             {event.title}
           </h3>
           
-          <div className="mb-4">
+          <div className="mb-4 relative">
             <h4 className="text-sm font-medium text-ziggurat-blue mb-2">Coordinators</h4>
             <div className="space-y-2">
               {event.coordinators.map((coordinator, index) => (
-                <div key={index} className="flex items-center text-sm text-white/70">
+                <div key={index} className="flex items-center text-sm text-white/70 hover:text-white transition-colors">
                   <User className="w-4 h-4 mr-2 text-white/50" />
                   <span className="mr-2">{coordinator.name}</span>
                   <span className="flex items-center">
@@ -78,11 +65,11 @@ const EventCard = ({ event }: { event: EventProps }) => {
             </div>
           </div>
           
-          <div>
+          <div className="relative">
             <h4 className="text-sm font-medium text-ziggurat-magenta mb-2">Rules & Guidelines</h4>
             <ul className="list-disc list-inside space-y-1 text-sm text-white/70">
               {event.rules.map((rule, index) => (
-                <li key={index}>{rule}</li>
+                <li key={index} className="hover:text-white transition-colors">{rule}</li>
               ))}
             </ul>
           </div>
