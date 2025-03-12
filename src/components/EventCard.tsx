@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { ChevronDown, User, Phone } from 'lucide-react';
+import { ArrowLeft, User, Phone } from 'lucide-react';
 
 export interface EventProps {
   id: string;
@@ -14,34 +14,54 @@ export interface EventProps {
 }
 
 const EventCard = ({ event }: { event: EventProps }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
 
   return (
-    <div 
-      className="glass-panel rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,163,255,0.1)]"
-    >
+    <div className="h-[450px] perspective-1000">
       <div 
-        className="p-6 cursor-pointer"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <div className="flex justify-between items-center">
-          <h3 className="text-xl md:text-2xl font-display font-semibold text-white">
-            {event.title}
-          </h3>
-          <ChevronDown className={`w-5 h-5 text-white/70 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-        </div>
-        
-        <p className="mt-2 text-white/70 line-clamp-2">
-          {event.description}
-        </p>
-      </div>
-      
-      <div 
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isExpanded ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+        className={`relative w-full h-full transition-all duration-500 preserve-3d ${
+          isFlipped ? 'rotate-y-180' : ''
         }`}
       >
-        <div className="p-6 pt-0 border-t border-white/10">
+        {/* Front of card */}
+        <div 
+          className="absolute w-full h-full backface-hidden glass-panel rounded-xl overflow-hidden cursor-pointer p-6 flex flex-col"
+          onClick={handleFlip}
+        >
+          <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-4">
+            {event.title}
+          </h3>
+          
+          <p className="text-white/70 flex-grow">
+            {event.description}
+          </p>
+          
+          <div className="mt-6 flex justify-center">
+            <span className="inline-block px-4 py-2 bg-ziggurat-blue/20 text-ziggurat-blue rounded-md text-sm font-medium">
+              Click to view details
+            </span>
+          </div>
+        </div>
+        
+        {/* Back of card */}
+        <div 
+          className="absolute w-full h-full backface-hidden rotate-y-180 glass-panel rounded-xl overflow-auto p-6"
+        >
+          <button 
+            onClick={handleFlip}
+            className="absolute top-4 left-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 text-white" />
+          </button>
+          
+          <h3 className="text-xl font-display font-semibold text-white text-center mb-4 mt-2">
+            {event.title}
+          </h3>
+          
           <div className="mb-4">
             <h4 className="text-sm font-medium text-ziggurat-blue mb-2">Coordinators</h4>
             <div className="space-y-2">
