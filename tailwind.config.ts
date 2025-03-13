@@ -59,7 +59,10 @@ export default {
 					gold: '#f5a425',
 					blue: '#0ea5e9',
 					gray: '#333333',
-					lightgray: '#888888'
+					lightgray: '#888888',
+					purple: '#8B5CF6',
+					magenta: '#D946EF',
+					red: '#ea384c'
 				}
 			},
 			borderRadius: {
@@ -108,6 +111,21 @@ export default {
 					'0%, 100%': { opacity: '0.3' },
 					'50%': { opacity: '1' },
 				},
+				'beat': {
+					'0%, 100%': { transform: 'scale(1)' },
+					'25%': { transform: 'scale(1.1)' },
+				},
+				'bounce-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' },
+				},
+				'wave': {
+					'0%': { transform: 'translateY(0)' },
+					'25%': { transform: 'translateY(-5px)' },
+					'50%': { transform: 'translateY(0)' },
+					'75%': { transform: 'translateY(5px)' },
+					'100%': { transform: 'translateY(0)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -120,6 +138,9 @@ export default {
 				'rotate-slow': 'rotate-slow 12s linear infinite',
 				'shimmer': 'shimmer 3s infinite',
 				'lightning-pulse': 'lightning-pulse 2s infinite',
+				'beat': 'beat 0.7s ease-in-out infinite',
+				'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite',
+				'wave': 'wave 2s ease-in-out infinite',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],

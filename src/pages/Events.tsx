@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import EventCard, { EventProps } from '@/components/EventCard';
+import { Music, Disc, Zap, Sparkles } from 'lucide-react';
 
 const Events = () => {
   const [filter, setFilter] = useState<string>('all');
@@ -178,25 +179,45 @@ const Events = () => {
     <div className="min-h-screen bg-ziggurat-darker bg-mesh pt-20">
       <div className="content-container py-16">
         <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-white/90 mb-4">
-            COMPETITIONS
-          </span>
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-gradient-mixed">
+          <div className="inline-flex items-center justify-center space-x-2 mb-4">
+            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-purple-600/20 text-white/90">
+              COMPETITIONS
+            </span>
+            <div className="audio-wave">
+              <div className="audio-wave-bar"></div>
+              <div className="audio-wave-bar"></div>
+              <div className="audio-wave-bar"></div>
+              <div className="audio-wave-bar"></div>
+              <div className="audio-wave-bar"></div>
+            </div>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-gradient-mixed relative">
             Events & Activities
+            <div className="absolute -top-6 -right-6 text-purple-500/20 hidden md:block animate-rotate-slow">
+              <Disc className="w-12 h-12" />
+            </div>
           </h1>
+          
           <p className="text-white/70">
             Explore our diverse range of technical competitions designed to challenge your 
             knowledge, skills, and creativity in various aspects of civil engineering.
           </p>
+          
+          <div className="mt-6 flex justify-center">
+            <div className="bg-purple-500/10 backdrop-blur-sm p-1.5 rounded-lg border border-purple-500/20 animate-float">
+              <Sparkles className="w-5 h-5 text-purple-400 animate-pulse-light" />
+            </div>
+          </div>
         </div>
         
         <div className="flex justify-center mb-10">
-          <div className="inline-flex p-1 rounded-lg bg-white/5 backdrop-blur-sm">
+          <div className="inline-flex p-1 rounded-lg bg-white/5 backdrop-blur-sm overflow-hidden relative electric-border">
             <button
               onClick={() => setFilter('all')}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
                 filter === 'all' 
-                  ? 'bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white shadow-lg' 
+                  ? 'bg-gradient-to-r from-purple-600 to-red-500 text-white shadow-lg' 
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -206,7 +227,7 @@ const Events = () => {
               onClick={() => setFilter('slot1')}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
                 filter === 'slot1' 
-                  ? 'bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white shadow-lg' 
+                  ? 'bg-gradient-to-r from-purple-600 to-red-500 text-white shadow-lg' 
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -216,7 +237,7 @@ const Events = () => {
               onClick={() => setFilter('slot2')}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
                 filter === 'slot2' 
-                  ? 'bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white shadow-lg' 
+                  ? 'bg-gradient-to-r from-purple-600 to-red-500 text-white shadow-lg' 
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -227,19 +248,34 @@ const Events = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {filteredEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
+            <div 
+              key={event.id} 
+              className="transform transition-all duration-300 hover:translate-y-[-5px]"
+            >
+              <EventCard event={event} />
+            </div>
           ))}
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-white/70 mb-6">
-            Ready to showcase your skills and compete with the brightest minds?
-          </p>
+          <div className="inline-flex items-center justify-center mb-6 space-x-2">
+            <Music className="w-5 h-5 text-purple-500 animate-bounce-subtle" />
+            <p className="text-white/70">
+              Ready to showcase your skills and compete with the brightest minds?
+            </p>
+            <Music className="w-5 h-5 text-red-500 animate-bounce-subtle" />
+          </div>
+          
           <Link 
             to="/register" 
-            className="inline-block px-8 py-3 rounded-md bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white font-medium transition-all hover:shadow-lg hover:scale-105"
+            className="inline-block px-8 py-3 rounded-md text-white font-medium 
+              relative overflow-hidden group transition-all hover:scale-105"
           >
-            Register Now
+            <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-red-500 animate-pulse-light"></span>
+            <span className="relative flex items-center justify-center">
+              Register Now
+              <Zap className="w-4 h-4 ml-2 animate-beat" />
+            </span>
           </Link>
         </div>
       </div>
