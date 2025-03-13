@@ -11,6 +11,10 @@ const Events = () => {
       id: 'paper_presentation',
       title: 'Paper and Poster Presentation',
       description: 'Showcase your research and innovative ideas in civil engineering through a formal presentation to a panel of experts.',
+      date: 'March 22, 2025',
+      time: '10:00 AM - 12:30 PM',
+      venue: 'Seminar Hall 1, Civil Block',
+      eligibility: 'Open to all undergraduate and postgraduate students of engineering colleges.',
       coordinators: [
         { name: 'Priya Sharma', contact: '9876543210' },
         { name: 'Rahul Kumar', contact: '9876543211' }
@@ -29,6 +33,10 @@ const Events = () => {
       id: 'master_cad',
       title: 'Master CAD',
       description: 'Demonstrate your proficiency in Computer-Aided Design by solving civil engineering design challenges within time constraints.',
+      date: 'March 22, 2025',
+      time: '10:00 AM - 12:30 PM (Round 1), 1:30 PM - 3:30 PM (Final)',
+      venue: 'CAD Lab, Civil Block',
+      eligibility: 'Individual participation only, open to all engineering students with CAD knowledge.',
       coordinators: [
         { name: 'Vikram Singh', contact: '9876543212' },
         { name: 'Ananya Patel', contact: '9876543213' }
@@ -47,6 +55,10 @@ const Events = () => {
       id: 'reflex_debate',
       title: 'Reflex and Debate',
       description: 'Test your knowledge of civil engineering concepts and your ability to articulate arguments in a structured debate format.',
+      date: 'March 22, 2025',
+      time: '10:00 AM - 12:30 PM',
+      venue: 'Seminar Hall 2, Civil Block',
+      eligibility: 'Teams of 2 members from any engineering college.',
       coordinators: [
         { name: 'Arjun Menon', contact: '9876543214' },
         { name: 'Divya Krishnan', contact: '9876543215' }
@@ -65,6 +77,10 @@ const Events = () => {
       id: 'link_build',
       title: 'Link \'N\' Build',
       description: 'Design and construct a model bridge using limited materials to withstand specified loads and meet structural requirements.',
+      date: 'March 22, 2025',
+      time: '10:00 AM - 12:30 PM',
+      venue: 'Structures Lab, Civil Block',
+      eligibility: 'Teams of 3-4 members from any engineering college.',
       coordinators: [
         { name: 'Rohan Verma', contact: '9876543216' },
         { name: 'Meera Nair', contact: '9876543217' }
@@ -83,6 +99,10 @@ const Events = () => {
       id: 'quiz',
       title: 'Technical Quiz',
       description: 'Compete in a multi-round quiz testing your knowledge of civil engineering fundamentals, history, and current developments.',
+      date: 'March 22, 2025',
+      time: '1:30 PM - 3:30 PM',
+      venue: 'Seminar Hall 1, Civil Block',
+      eligibility: 'Teams of 2 members from any engineering college.',
       coordinators: [
         { name: 'Karthik Rajan', contact: '9876543218' },
         { name: 'Sneha Gupta', contact: '9876543219' }
@@ -101,6 +121,10 @@ const Events = () => {
       id: 'spot_events',
       title: 'Spot Events',
       description: 'Participate in various impromptu civil engineering challenges that test your quick thinking and practical knowledge.',
+      date: 'March 22, 2025',
+      time: '1:30 PM - 3:30 PM',
+      venue: 'Various Locations, Civil Block',
+      eligibility: 'Individual participation, open to all engineering students.',
       coordinators: [
         { name: 'Aditya Sharma', contact: '9876543220' },
         { name: 'Lakshmi Menon', contact: '9876543221' }
@@ -119,6 +143,10 @@ const Events = () => {
       id: 'treasure_hunt',
       title: 'Treasure Hunt',
       description: 'Solve engineering puzzles and follow clues in an exciting hunt around the campus that tests your civil engineering knowledge.',
+      date: 'March 22, 2025',
+      time: '1:30 PM - 3:30 PM',
+      venue: 'Starting at College Quadrangle',
+      eligibility: 'Teams of 4 members from any engineering college.',
       coordinators: [
         { name: 'Nikhil Rajesh', contact: '9876543222' },
         { name: 'Pooja Suresh', contact: '9876543223' }
@@ -153,7 +181,7 @@ const Events = () => {
           <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-white/90 mb-4">
             COMPETITIONS
           </span>
-          <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-white">
+          <h1 className="text-4xl md:text-5xl font-display font-bold mb-6 text-gradient-mixed">
             Events & Activities
           </h1>
           <p className="text-white/70">
@@ -168,7 +196,7 @@ const Events = () => {
               onClick={() => setFilter('all')}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
                 filter === 'all' 
-                  ? 'bg-ziggurat-blue text-white shadow-lg' 
+                  ? 'bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white shadow-lg' 
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -178,7 +206,7 @@ const Events = () => {
               onClick={() => setFilter('slot1')}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
                 filter === 'slot1' 
-                  ? 'bg-ziggurat-blue text-white shadow-lg' 
+                  ? 'bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white shadow-lg' 
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -188,7 +216,7 @@ const Events = () => {
               onClick={() => setFilter('slot2')}
               className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
                 filter === 'slot2' 
-                  ? 'bg-ziggurat-blue text-white shadow-lg' 
+                  ? 'bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white shadow-lg' 
                   : 'text-white/70 hover:text-white hover:bg-white/10'
               }`}
             >
@@ -209,7 +237,7 @@ const Events = () => {
           </p>
           <Link 
             to="/register" 
-            className="inline-block px-8 py-3 rounded-md bg-ziggurat-blue text-white font-medium transition-all hover:bg-ziggurat-blue/90 hover:scale-105"
+            className="inline-block px-8 py-3 rounded-md bg-gradient-to-r from-ziggurat-blue to-ziggurat-purple text-white font-medium transition-all hover:shadow-lg hover:scale-105"
           >
             Register Now
           </Link>
