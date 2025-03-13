@@ -1,5 +1,6 @@
 
 import { useRef, useEffect } from 'react';
+import { Building, MapPin, Clock } from 'lucide-react';
 
 export interface TimeSlot {
   time: string;
@@ -47,7 +48,7 @@ const ScheduleTimeline = ({ slots }: { slots: TimeSlot[] }) => {
     <div ref={timelineRef} className="w-full max-w-4xl mx-auto">
       <div className="relative">
         {/* Vertical line */}
-        <div className="absolute left-4 sm:left-1/2 sm:-ml-0.5 w-0.5 h-full bg-ziggurat-blue/30"></div>
+        <div className="absolute left-12 sm:left-1/2 h-full w-[2px] bg-gray-300/30"></div>
 
         {slots.map((slot, index) => (
           <div 
@@ -55,28 +56,28 @@ const ScheduleTimeline = ({ slots }: { slots: TimeSlot[] }) => {
             className={`timeline-item relative mb-12 sm:mb-16 opacity-0 transition-opacity duration-700 delay-${index * 100}`}
           >
             {/* Time indicator */}
-            <div className="flex items-center sm:justify-center mb-4">
-              <div className="z-10 flex items-center justify-center w-8 h-8 rounded-full bg-ziggurat-blue text-white text-sm shadow-glow sm:absolute sm:left-1/2 sm:-ml-4">
-                {index + 1}
-              </div>
-              <div className="ml-4 sm:ml-0 glass-panel px-4 py-1 rounded-full">
-                <span className="text-white font-medium">{slot.time}</span>
+            <div className="flex items-center mb-4">
+              <div className="z-10 flex items-center justify-center w-12 h-12 rounded-full bg-white text-black shadow-md text-sm font-medium sm:absolute sm:left-1/2 sm:-ml-6">
+                {slot.time.split(' - ')[0]}
               </div>
             </div>
 
             {/* Events */}
-            <div className="ml-12 sm:ml-0 sm:grid sm:grid-cols-2 sm:gap-8">
+            <div className="ml-20 sm:ml-0 sm:grid sm:grid-cols-2 sm:gap-8">
               {slot.events.map((event, eventIndex) => (
                 <div 
                   key={eventIndex}
-                  className={`glass-panel p-4 rounded-lg mb-4 sm:mb-0 ${
+                  className={`bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-5 mb-4 sm:mb-0 transition-all hover:bg-white/20 ${
                     eventIndex % 2 === 0 
-                      ? 'sm:col-start-1 sm:text-right sm:mr-8'
-                      : 'sm:col-start-2 sm:ml-8'
+                      ? 'sm:col-start-1 sm:text-right sm:mr-12 sm:pr-6'
+                      : 'sm:col-start-2 sm:ml-12 sm:pl-6'
                   }`}
                 >
-                  <h3 className="font-medium text-white text-lg">{event.title}</h3>
-                  <p className="text-white/60 text-sm mt-1">{event.location}</p>
+                  <h3 className="font-medium text-white text-lg mb-2">{event.title}</h3>
+                  <p className="flex items-center text-white/70 text-sm">
+                    <MapPin className="w-4 h-4 inline mr-1" />
+                    {event.location}
+                  </p>
                 </div>
               ))}
             </div>
