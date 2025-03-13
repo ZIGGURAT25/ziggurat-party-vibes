@@ -54,11 +54,10 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				ziggurat: {
-					dark: '#191919',
-					darker: '#121212',
-					blue: '#00A3FF',
-					magenta: '#FF00A8',
-					purple: '#7000FF',
+					dark: '#09090b',
+					darker: '#030303',
+					gold: '#f5a425',
+					blue: '#0ea5e9',
 					gray: '#333333',
 					lightgray: '#888888'
 				}
@@ -101,6 +100,14 @@ export default {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' },
 				},
+				'shimmer': {
+					'0%': { transform: 'translateX(-100%) rotate(30deg)' },
+					'100%': { transform: 'translateX(100%) rotate(30deg)' },
+				},
+				'lightning-pulse': {
+					'0%, 100%': { opacity: '0.3' },
+					'50%': { opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -111,10 +118,12 @@ export default {
 				'fade-in': 'fade-in 0.8s ease-out',
 				'pulse-light': 'pulse-light 2s ease-in-out infinite',
 				'rotate-slow': 'rotate-slow 12s linear infinite',
+				'shimmer': 'shimmer 3s infinite',
+				'lightning-pulse': 'lightning-pulse 2s infinite',
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
-				display: ['Clash Display', 'sans-serif'],
+				display: ['Orbitron', 'Clash Display', 'sans-serif'],
 			},
 			backdropBlur: {
 				xs: '2px',

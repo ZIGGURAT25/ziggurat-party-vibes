@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Zap } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled || isOpen ? 'bg-black/70 backdrop-blur-lg' : 'bg-transparent'
+        scrolled || isOpen ? 'bg-zinc-900/90 backdrop-blur-lg border-b border-amber-500/20' : 'bg-transparent'
       }`}
     >
       <div className="content-container">
@@ -48,8 +48,13 @@ const Navbar = () => {
             to="/"
             className="flex items-center space-x-2"
           >
-            <span className="text-2xl font-display font-bold text-gradient-blue">
-              Ziggurat<span className="text-gradient-magenta">'25</span>
+            <div className="relative w-10 h-10 mr-2">
+              <Zap className="w-full h-full text-amber-500 absolute animate-pulse-light" />
+              <Zap className="w-full h-full text-blue-500 absolute -translate-x-1 -translate-y-1" />
+            </div>
+            <span className="text-2xl font-display font-bold">
+              <span className="text-gradient-gold">ZIGGURAT</span>
+              <span className="text-gradient-blue">'25</span>
             </span>
           </Link>
 
@@ -59,9 +64,9 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-all duration-200 ${
+                className={`text-sm font-display font-medium transition-all duration-200 ${
                   isActive(link.path) 
-                    ? 'text-ziggurat-blue' 
+                    ? 'text-amber-500' 
                     : 'text-white/80 hover:text-white'
                 }`}
               >
@@ -86,16 +91,16 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isOpen && (
-        <div className="md:hidden h-screen w-full bg-black/95 backdrop-blur-md animate-fade-in">
+        <div className="md:hidden h-screen w-full bg-zinc-900/95 backdrop-blur-lg animate-fade-in">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-xl font-medium transition-all duration-200 ${
+                className={`text-xl font-display font-medium transition-all duration-200 ${
                   isActive(link.path) 
-                    ? 'text-gradient-blue' 
-                    : 'text-white hover:text-ziggurat-blue'
+                    ? 'text-gradient-gold' 
+                    : 'text-white hover:text-amber-500'
                 }`}
               >
                 {link.title}

@@ -1,5 +1,5 @@
 
-import { User, Phone, Clock, MapPin, Calendar, Info } from 'lucide-react';
+import { User, Phone, Clock, MapPin, Calendar, Info, Zap } from 'lucide-react';
 
 export interface EventProps {
   id: string;
@@ -18,51 +18,63 @@ export interface EventProps {
 
 const EventCard = ({ event }: { event: EventProps }) => {
   return (
-    <div className="h-[500px] perspective-1000 group">
+    <div className="h-[550px] perspective-1000 group">
       <div 
         className="relative w-full h-full transition-all duration-700 preserve-3d hover:rotate-y-180 group-hover:scale-105"
       >
         {/* Front of card */}
         <div 
-          className="absolute w-full h-full backface-hidden glass-panel rounded-xl overflow-hidden p-6 flex flex-col"
+          className="absolute w-full h-full backface-hidden overflow-hidden rounded-lg p-6 flex flex-col bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 border border-amber-500/30"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-ziggurat-blue/20 via-transparent to-ziggurat-magenta/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          {/* Lightning bolt accent */}
+          <div className="absolute top-0 right-0 w-[150px] h-[150px] opacity-10">
+            <Zap className="w-full h-full text-amber-400" strokeWidth={3} />
+          </div>
           
           {/* Event tag */}
-          <div className="absolute top-4 right-4">
-            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-ziggurat-blue/30 text-white">
+          <div className="absolute top-4 right-4 z-10">
+            <span className="inline-block px-3 py-1 text-xs font-bold rounded-full bg-amber-500 text-zinc-900">
               ZIGGURAT'25
             </span>
           </div>
+
+          {/* Card border glow effect */}
+          <div className="absolute inset-0 border-2 border-amber-500/50 rounded-lg glow-card opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
-          <h3 className="text-xl md:text-2xl font-display font-semibold text-white mb-4 relative">
+          {/* Top lightning bolt accent */}
+          <div className="absolute -top-10 -left-10 w-[100px] h-[100px] text-blue-500 opacity-30 transform rotate-45">
+            <Zap className="w-full h-full" strokeWidth={3} />
+          </div>
+          
+          <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4 relative border-b border-amber-500/50 pb-3">
             {event.title}
+            <span className="absolute -left-1 bottom-0 w-1/3 h-1 bg-gradient-to-r from-amber-500 to-blue-500"></span>
           </h3>
           
-          <p className="text-white/70 relative mb-6">
+          <p className="text-zinc-300 relative mb-6 line-clamp-3">
             {event.description}
           </p>
 
           {/* Additional event details */}
           {(event.date || event.time || event.venue) && (
-            <div className="mt-auto space-y-2 relative">
+            <div className="mt-auto space-y-3 relative">
               {event.date && (
-                <div className="flex items-center text-sm text-white/70">
-                  <Calendar className="w-4 h-4 mr-2 text-ziggurat-blue" />
+                <div className="flex items-center text-sm text-zinc-300">
+                  <Calendar className="w-4 h-4 mr-2 text-amber-500" />
                   <span>{event.date}</span>
                 </div>
               )}
               
               {event.time && (
-                <div className="flex items-center text-sm text-white/70">
-                  <Clock className="w-4 h-4 mr-2 text-ziggurat-magenta" />
+                <div className="flex items-center text-sm text-zinc-300">
+                  <Clock className="w-4 h-4 mr-2 text-blue-500" />
                   <span>{event.time}</span>
                 </div>
               )}
               
               {event.venue && (
-                <div className="flex items-center text-sm text-white/70">
-                  <MapPin className="w-4 h-4 mr-2 text-ziggurat-purple" />
+                <div className="flex items-center text-sm text-zinc-300">
+                  <MapPin className="w-4 h-4 mr-2 text-amber-500" />
                   <span>{event.venue}</span>
                 </div>
               )}
@@ -70,7 +82,8 @@ const EventCard = ({ event }: { event: EventProps }) => {
           )}
           
           <div className="mt-6 flex justify-center relative">
-            <span className="inline-block px-4 py-2 bg-ziggurat-blue/20 text-ziggurat-blue rounded-md text-sm font-medium animate-pulse">
+            <span className="inline-flex items-center px-4 py-2 bg-zinc-800 text-amber-400 rounded-md text-sm font-bold border border-amber-400/30 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+              <Zap className="w-4 h-4 mr-2 animate-pulse" />
               Hover to view details
             </span>
           </div>
@@ -78,25 +91,32 @@ const EventCard = ({ event }: { event: EventProps }) => {
         
         {/* Back of card */}
         <div 
-          className="absolute w-full h-full backface-hidden rotate-y-180 glass-panel rounded-xl overflow-auto p-6"
+          className="absolute w-full h-full backface-hidden rotate-y-180 overflow-auto rounded-lg p-6 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 border border-blue-500/30"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-ziggurat-magenta/20 via-transparent to-ziggurat-blue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          {/* Card border glow effect */}
+          <div className="absolute inset-0 border-2 border-blue-500/50 rounded-lg glow-card-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
-          <h3 className="text-xl font-display font-semibold text-white text-center mb-4 relative">
+          {/* Bottom lightning bolt accent */}
+          <div className="absolute -bottom-10 -right-10 w-[100px] h-[100px] text-amber-500 opacity-30 transform -rotate-45">
+            <Zap className="w-full h-full" strokeWidth={3} />
+          </div>
+          
+          <h3 className="text-xl font-display font-bold text-white text-center mb-4 relative border-b border-blue-500/50 pb-3">
             {event.title}
+            <span className="absolute -left-1 bottom-0 w-1/3 h-1 bg-gradient-to-r from-blue-500 to-amber-500"></span>
           </h3>
           
           <div className="mb-4 relative">
-            <h4 className="text-sm font-medium text-ziggurat-blue mb-2 flex items-center">
-              <User className="w-4 h-4 mr-1 text-ziggurat-blue/80" />
+            <h4 className="text-sm font-bold text-blue-400 mb-2 flex items-center">
+              <User className="w-4 h-4 mr-1 text-blue-400" />
               Coordinators
             </h4>
             <div className="space-y-2">
               {event.coordinators.map((coordinator, index) => (
-                <div key={index} className="flex items-center text-sm text-white/70 hover:text-white transition-colors">
+                <div key={index} className="flex items-center text-sm text-zinc-300 hover:text-white transition-colors p-2 bg-zinc-800/50 rounded-md">
                   <span className="mr-2">{coordinator.name}</span>
                   <span className="flex items-center ml-auto">
-                    <Phone className="w-3 h-3 mr-1 text-white/50" />
+                    <Phone className="w-3 h-3 mr-1 text-blue-400" />
                     {coordinator.contact}
                   </span>
                 </div>
@@ -106,24 +126,27 @@ const EventCard = ({ event }: { event: EventProps }) => {
           
           {event.eligibility && (
             <div className="mb-4 relative">
-              <h4 className="text-sm font-medium text-ziggurat-purple mb-2 flex items-center">
-                <Info className="w-4 h-4 mr-1 text-ziggurat-purple/80" />
+              <h4 className="text-sm font-bold text-amber-400 mb-2 flex items-center">
+                <Info className="w-4 h-4 mr-1 text-amber-400" />
                 Eligibility
               </h4>
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-zinc-300 p-2 bg-zinc-800/50 rounded-md">
                 {event.eligibility}
               </p>
             </div>
           )}
           
           <div className="relative">
-            <h4 className="text-sm font-medium text-ziggurat-magenta mb-2 flex items-center">
-              <Info className="w-4 h-4 mr-1 text-ziggurat-magenta/80" />
+            <h4 className="text-sm font-bold text-blue-400 mb-2 flex items-center">
+              <Info className="w-4 h-4 mr-1 text-amber-400" />
               Rules & Guidelines
             </h4>
-            <ul className="list-disc list-inside space-y-1 text-sm text-white/70">
+            <ul className="space-y-1 text-sm text-zinc-300">
               {event.rules.map((rule, index) => (
-                <li key={index} className="hover:text-white transition-colors">{rule}</li>
+                <li key={index} className="hover:text-white transition-colors p-2 bg-zinc-800/50 rounded-md flex">
+                  <span className="text-amber-500 mr-2">•</span>
+                  {rule}
+                </li>
               ))}
             </ul>
           </div>

@@ -12,6 +12,9 @@ import Success from "./pages/Success";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
+// Save the uploaded logo image to public
+const logoImagePath = "public/lovable-uploads/c69416fd-ae76-45ba-932a-e5c1b2aec8cb.png";
+
 const queryClient = new QueryClient();
 
 const App = () => (
