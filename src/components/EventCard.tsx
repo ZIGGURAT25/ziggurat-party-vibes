@@ -18,9 +18,9 @@ export interface EventProps {
 
 const EventCard = ({ event }: { event: EventProps }) => {
   return (
-    <div className="h-[550px] perspective-1000 group">
+    <div className="h-[550px] perspective-1000">
       <div 
-        className="relative w-full h-full transition-all duration-700 preserve-3d hover:rotate-y-180 group-hover:scale-105"
+        className="relative w-full h-full transition-all duration-700 preserve-3d transform-style-3d group hover:rotate-y-180"
       >
         {/* Front of card */}
         <div 
@@ -82,7 +82,7 @@ const EventCard = ({ event }: { event: EventProps }) => {
           )}
           
           <div className="mt-6 flex justify-center relative">
-            <span className="inline-flex items-center px-4 py-2 bg-zinc-800 text-amber-400 rounded-md text-sm font-bold border border-amber-400/30 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+            <span className="inline-flex items-center px-4 py-2 bg-zinc-800 text-amber-400 rounded-md text-sm font-bold border border-amber-400/30 shadow-[0_0_15px_rgba(245,158,11,0.15)] animate-pulse-light">
               <Zap className="w-4 h-4 mr-2 animate-pulse" />
               Hover to view details
             </span>
@@ -91,7 +91,7 @@ const EventCard = ({ event }: { event: EventProps }) => {
         
         {/* Back of card */}
         <div 
-          className="absolute w-full h-full backface-hidden rotate-y-180 overflow-auto rounded-lg p-6 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 border border-blue-500/30"
+          className="absolute w-full h-full backface-hidden overflow-auto rounded-lg p-6 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800 border border-blue-500/30 rotate-y-180"
         >
           {/* Card border glow effect */}
           <div className="absolute inset-0 border-2 border-blue-500/50 rounded-lg glow-card-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
